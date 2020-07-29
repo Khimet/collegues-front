@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Khimet/collegues-front.svg?branch=master)](https://travis-ci.org/Khimet/collegues-front)
 
-**The web app is available at:** [](https://khimet.github.io/collegues-front/)
+**The web app is available at:** [https://khimet.github.io/collegues-front/](https://khimet.github.io/collegues-front/)
 
 
 # ColleguesFront
