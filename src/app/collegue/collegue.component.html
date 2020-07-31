@@ -1,8 +1,8 @@
 
 <!--<p>{{unObjetCollegueFourni}}</p>-->
-<div class="container">
-  <div class="row align-items-center justify-content-center">
-    <div class="col-md-4 col-sm-12">
+<div class="container-fluid">
+  <div class="row  justify-content-center">
+    <div class="col-md-4 col-12">
       <img src={{col.photoUrl}} class="rounded img-fluid" alt="">
     </div>
     <div class="col-4">
@@ -10,16 +10,32 @@
       Nom <br>
       Prénoms <br>
       Date de naissance <br>
-      Email <br><br><br>
-      <a href="#" (click)="clickCreerClient()">Créer un nouveau collègue</a>
+      Email
+      <div *ngIf="modifierClient; else affichageParDefaut1">
+        Photo URL
+      </div>
+      <ng-template #affichageParDefaut1>
+        <br><br><br>
+        <a href="#" (click)="clickCreerClient()">Créer un nouveau collègue</a>
+      </ng-template>
+
     </div>
     <div class="col-4">
       {{col.matricule}} <br>
-      {{col.nom}} <br>
+      {{col.nom | uppercase}} <br>
       {{col.prenoms}} <br>
-      {{col.dateDeNaissance.getUTCDate()}}/{{col.dateDeNaissance.getUTCMonth()}}/{{col.dateDeNaissance.getFullYear()}} <br>
-      {{col.email}} <br><br><br>
-      <button (click)="clickModifierClient()" class="btn btn-primary float-right" type="button">Modifier</button>
+      {{col.dateDeNaissance | date}} <br>
+      <!--{{col.dateDeNaissance.getUTCDate()}}/{{col.dateDeNaissance.getUTCMonth()}}/{{col.dateDeNaissance.getFullYear()}} <br> -->
+      <div *ngIf="modifierClient; else affichageParDefaut">
+        <input type="text" placeholder="Entrez une nouvelle adresse mail" #emailSaisie>
+        <input type="text" placeholder="Entrez une nouvelle URL" #urlSaisie> <br><br><br>
+        <button class="btn btn-success" type="button" (click)="modifierEmailUrl(emailSaisie.value, urlSaisie.value)">Valider</button>
+      </div>
+      <ng-template #affichageParDefaut>
+        {{col.email}} <br><br><br>
+        <button (click)="clickModifierClient()" class="btn btn-primary float-right" type="button">Modifier</button>
+      </ng-template>
+
 
     </div>
   </div>

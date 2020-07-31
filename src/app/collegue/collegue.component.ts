@@ -9,6 +9,8 @@ import { Collegue } from '../models/Collegue';
 export class CollegueComponent implements OnInit {
   @Input() col: Collegue;
 
+  modifierClient: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +22,24 @@ export class CollegueComponent implements OnInit {
 
   clickModifierClient(): void {
     console.log('Modification du collègue');
+    this.modifierClient = !this.modifierClient;
+  }
+
+  modifierEmailUrl(emailSaisie, urlSaisie): void {
+
+    if (emailSaisie !== ''){
+
+      this.col.email = emailSaisie;
+
+    }
+
+    if (urlSaisie !== ''){
+      this.col.photoUrl = urlSaisie;
+    }
+
+
+    this.modifierClient = !this.modifierClient;
+
   }
 
 }
