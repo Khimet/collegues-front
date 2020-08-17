@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { tap } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,12 @@ export class DataService {
   subscribeToCollegueSelectedFromMatricule(): Observable<Collegue> {
     return this.subjectCollegueFromSelectedMatricule.asObservable();
   }
+
+  genererMatricule(): string {
+
+    return uuidv4();
+
+}
 
 
 

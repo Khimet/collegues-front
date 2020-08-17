@@ -1,0 +1,25 @@
+
+{{nouveauCollegue | json}}
+
+<form #etatForm="ngForm">
+  <label for="matricule">Matricule </label>
+  <input type="text" name="matricule" [(ngModel)]="nouveauCollegue.matricule" readonly><br>
+  <label for="nom">Nom </label>
+  <input type="text" name="nom" [(ngModel)]="nouveauCollegue.nom" required><br>
+  <label for="prenoms">Prénoms </label>
+  <input type="text" name="prenoms" [(ngModel)]="nouveauCollegue.prenoms" required><br>
+  <label for="email">Email </label>
+  <input type="text" name="email" [(ngModel)]="nouveauCollegue.email" required><br>
+  <label for="dateDeNaissance">Date de Naissance </label>
+  <input type="datetime" name="dateDeNaissance" [(ngModel)]="nouveauCollegue.dateDeNaissance" required><br>
+  <label for="photoUrl">Photo URL </label>
+  <input type="text" name="photoUrl" [(ngModel)]="nouveauCollegue.photoUrl" required minlength="7">
+
+  <hr>
+  Formulaire valide : {{etatForm.valid}}
+
+  <br>
+
+  <!--<button>Créer</button>-->
+
+</form>

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 import { DataService } from '../services/data.service';
 import { Subscription } from 'rxjs';
+import { CreerCollegueComponent } from '../creer-collegue/creer-collegue.component';
 
 @Component({
   selector: 'app-collegue',
@@ -37,6 +38,8 @@ export class CollegueComponent implements OnInit {
 
   clickCreerClient(): void {
     console.log('Créer un nouveau collègue');
+    let creerCollegueComponentObject = new CreerCollegueComponent(this.dataservice);
+    creerCollegueComponentObject.creerCollegue();
   }
 
   clickModifierClient(): void {
