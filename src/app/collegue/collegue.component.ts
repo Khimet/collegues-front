@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
+import { DataService } from '../services/data.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-collegue',
@@ -7,14 +9,31 @@ import { Collegue } from '../models/Collegue';
   styleUrls: ['./collegue.component.css']
 })
 export class CollegueComponent implements OnInit {
-  @Input() col: Collegue;
+  col: Collegue = this.dataservice.recupererCollegueCourant();
+
+  collegueSelectionne: Subscription;
 
   modifierClient: boolean = false;
 
-  constructor() { }
+  constructor(private dataservice: DataService) { }
 
   ngOnInit(): void {
+
+    this.collegueSelectionne = this.dataservice.subscribeToCollegueSelectedFromMatricule()
+    .subscribe(data => {
+      console.log(data instanceof Collegue);
+      console.log(data.email);
+      this.col = data},
+    err => {console.log(err)},
+    () => {}
+    );
   }
+
+  ngOnDestroy(): void {
+    this.collegueSelectionne.unsubscribe();
+  }
+
+
 
   clickCreerClient(): void {
     console.log('Créer un nouveau collègue');
@@ -40,6 +59,17 @@ export class CollegueComponent implements OnInit {
 
     this.modifierClient = !this.modifierClient;
 
+  }
+
+  GetClientFromMatricule(matricule): void {
+    this.dataservice.recupererCollegueParMatricule(matricule)
+    .subscribe(data => {
+      console.log(data instanceof Collegue);
+      console.log(data.email);
+      this.col.email = data.email}, //new Collegue(data.matricule, data.nom, data.prenoms, data.email, data.dateDeNaissance, data.photoUrl),
+    err => {},
+    () => {}
+    );
   }
 
 }

@@ -4,10 +4,10 @@
       Recherche par nom
     </div>
     <div class="col-5 col-md-6">
-      <input type="text">
+      <input type="text" #nomSaisie>
     </div>
     <div class="col-4 col-md-2">
-      <div class="btn btn-primary" (click)="rechercher()">Rechercher</div>
+      <div class="btn btn-primary" (click)="rechercher(nomSaisie.value)">Rechercher</div>
     </div>
 
   </div>
@@ -15,7 +15,7 @@
     <div class="col">
       <div *ngIf="recherche">
         <ul>
-          <li *ngFor="let obj of matriculesMock">{{obj.matricule}}</li>
+          <li *ngFor="let m of matricules" (click)="clickGetClientFromMatricule(m)">{{m}}</li>
         </ul>
       </div>
     </div>
