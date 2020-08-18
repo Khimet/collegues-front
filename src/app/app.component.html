@@ -1,25 +1,19 @@
-<div class="container">
-  <h1 style="text-align: center;">Administration Collegue</h1>
+<header>
+  <!-- Entête -->
+  </header>
+  <nav>
+  <!-- Navigation via un menu -->
+    <app-menu></app-menu>
+  </nav>
+  <main>
+  <!-- le composant défini dans la route courante va être inséré à cet endroit -->
 
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <app-recherche-collegue-par-nom></app-recherche-collegue-par-nom>
-    </div>
-    <div class="col-12 col-md-6">
-      <app-collegue></app-collegue>
-      <!--<app-creer-collegue></app-creer-collegue>-->
-    </div>
-  </div>
-
-  <!-- creerCollegue component -->
-  <div class="row mt-5">
-    <div class="col-12 col-md-6 text-center">
-      <app-creer-collegue></app-creer-collegue>
-    </div>
-  </div>
-<!-- /creerCollegue component-->
-
-</div>
-
-
-
+  <!-- au regard de la configuration précédente,
+  /page1 va insérer le composant AComponent à cet emplacement
+  /page2 a insérer le composant BComponent à cet emplacement
+  -->
+  <router-outlet></router-outlet>
+  </main>
+  <footer>
+  <!-- Pied de page -->
+  </footer>
