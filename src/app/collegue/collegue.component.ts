@@ -38,8 +38,8 @@ export class CollegueComponent implements OnInit {
 
   clickCreerClient(): void {
     console.log('Créer un nouveau collègue');
-    let creerCollegueComponentObject = new CreerCollegueComponent(this.dataservice);
-    creerCollegueComponentObject.creerCollegue();
+    /*let creerCollegueComponentObject = new CreerCollegueComponent(this.dataservice);
+    creerCollegueComponentObject.creerCollegue();*/
   }
 
   clickModifierClient(): void {
